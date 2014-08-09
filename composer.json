@@ -1,0 +1,13 @@
+{
+  "name": "nominalmx/nominal-php",
+  "version": "1.0.0",
+  "description": "Librería PHP para nominal.mx",
+  "homepage": "https://www.nominal.mx/",
+  "license": "MIT",
+  "require": {
+    "php": ">=5.5",
+  },
+  "autoload": {
+    "classmap": ["lib/Nominal/"]
+  }
+}
