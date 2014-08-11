@@ -6,9 +6,9 @@ require_once(dirname(__FILE__) . '/../lib/Nominal.php');
 abstract class NominalTest extends PHPUnit_Framework_TestCase { 
   protected function setUp()
   {
-    $apiEnvKey = 'fe6aa268d6f19459ce5185b614def';
+    $apiEnvKey = 'f0f69797bd74948979daa9e4a0749';
     Nominal::setApiKey($apiEnvKey);
-    $privateApiEnvKey = 'fd2a226bc1c173812104e7df61324';
+    $privateApiEnvKey = 'fc519f4332533f6dec05a3c7723cb';
     Nominal::setPrivateApiKey($privateApiEnvKey);
   }
 }

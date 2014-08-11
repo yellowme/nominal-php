@@ -78,7 +78,6 @@ class Nominal_Requestor {
     $response_code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
     curl_close($curl);
     if ($response_code != 200 && $response_code != 201) {
-      echo $response_code;
       Nominal_Error::errorHandler($response, $response_code);
     }
     return json_decode($response);

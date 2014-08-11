@@ -1,7 +1,13 @@
 <?php
-abstract class Nominal_Resource extends Nominal_Object
+abstract class Nominal_Resource
 {   
-   public static function className($class)
+
+  public function __construct($id=null)
+  {
+    $this->id = $id;
+  }
+
+  public static function className($class)
   {
     // Useful for namespaces: Foo\Nominal_Invoice
     if ($postfix = strrchr($class, '\\'))
@@ -43,67 +49,27 @@ abstract class Nominal_Resource extends Nominal_Object
     return "$base/$extn";  
   }
 
+  protected static function _where($class, $params) 
+  {
+    $requestor = new Nominal_Requestor();
+    $url = self::classUrl($class);
+    return $requestor->request('get', $url, $params);
+  }
+
   protected static function _find($class, $id) 
   {
     $instance = new $class($id);
     $requestor = new Nominal_Requestor();
     $url = $instance->instanceUrl();
-    $response = $requestor->request('get', $url);
-    $instance->loadFromArray($response);
-    return $instance;
+    return $requestor->request('get', $url);
   }
 
   protected static function _create($class,$params) 
   {
     $requestor = new Nominal_Requestor();
     $url = self::classUrl($class);
-    $response = $requestor->request('post', $url, $params);
-    $instance = new $class();
-    $instance->loadFromArray($response);
-    return $instance;
+    return $requestor->request('post', $url, $params);
   }
 
-  protected function _delete($parent=null, $member=null) 
-  {
-    self::_customAction('delete', null, null);
-    if (isset($parent) && isset($member)) {
-      $obj = $this->$parent->$member;
-      if (strpos(get_class($obj), "Nominal_Object") !== false) {        
-        foreach ($this->$parent->$member as $k => $v) {
-          if (strpos($v->id, $this->id) !== false) {
-            $this->$parent->$member->_values = Nominal_Util::shiftArray($this->$parent->$member->_values,$k);
-            $this->$parent->$member->loadFromArray($this->$parent->$member->_values);
-            $this->$parent->$member->offsetUnset(count($this->$parent->$member)-1);
-            break ;
-          }
-        }
-      } else {
-        unset($this->$parent->$member);
-      }
-    }
-    return $this;
-  }
-
-  protected function _update($params) 
-  {
-    $requestor = new Nominal_Requestor();
-    $url = $this->instanceUrl();
-    $response = $requestor->request('put', $url, $params);
-    $this->loadFromArray($response);
-    return $this;
-  }
-
-  protected function _customAction($method='post', $action=null, $params=null) 
-  {
-    $requestor = new Nominal_Requestor();
-    if (isset($action)) {
-      $url = $this->instanceUrl() . '/' . $action;
-    } else {
-      $url = $this->instanceUrl();
-    }
-    $response = $requestor->request($method, $url, $params);
-    $this->loadFromArray($response);
-    return $this;
-  }
 }
 ?>

@@ -21,12 +21,12 @@ require(dirname(__FILE__) . '/Nominal/Util.php');
 require(dirname(__FILE__) . '/Nominal/Error.php');
 
 // Plumbing
-require(dirname(__FILE__) . '/Nominal/Object.php');
 require(dirname(__FILE__) . '/Nominal/Requestor.php');
 require(dirname(__FILE__) . '/Nominal/Resource.php');
 
 // Nominal API Resources
 require(dirname(__FILE__) . '/Nominal/Invoice.php');
 require(dirname(__FILE__) . '/Nominal/Issuer.php');
+require(dirname(__FILE__) . '/Nominal/Receptor.php');
 
 ?>
