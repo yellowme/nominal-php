@@ -10,7 +10,7 @@ class Nominal_Error extends Exception
     $response = json_decode($response, true);
     $message = isset($response['message']) ? $response['message'] : null;
     $params = isset($response['param']) ? $response['param'] : null;
-    if (isset($code) != true) {
+    if (isset($code) != true || $code==0) {
       throw new Nominal_NoConnectionError("No connection", $code, $params);
     }
     switch ($code) {

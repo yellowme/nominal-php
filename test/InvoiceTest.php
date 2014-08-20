@@ -2,39 +2,41 @@
 include 'NominalTest.php';
 class Nominal_InvoiceTest extends NominalTest {
 
-  public static $valid_invoice = array(
-    'issuer_id' => 'b4a077307fba43a337a04be1',
-    'receptor_id' => 'fd09f0adbff6745b0a835957', //7cbc06824645c3d3f9eca580  9b0c50e6a7f7c41416c42630
-    'concepts' => [array(
-      'description' => 'pues una panzita',
-      'quantity' => '1',
-      'unit' => 'no aplica',
-      'quantity' => '1',
-      'unit_value' => 150.00,
-      'amount' => 150.00,
-    )],
-  );
-
   public function testSuccesfulFindInvoice()
   {
-    $id = "8c1548e7057f672d7b401f68";
-    $invoice = Nominal_Invoice::find($id);
-    $this->assertEquals($id, $invoice->id);
+    //$id = "0bc4d6d415c165d5570a2464";
+    //$invoice = Nominal_Invoice::find($id);
+    //var_dump($invoice);
+    //$this->assertEquals($id, $invoice->id);
   }
 
   public function testSuccesfulCreateInvoice()
   {
-    //$invoice = Nominal_Invoice::create(self::$valid_invoice);
+    $valid_invoice = array(
+      'issuer_id' => '4cb956a2f11d6cc89c7b43de',
+      'receptor_id' => 'c3c7d3a90eb2fc9ad1fed49d',
+      'api_reference' => '1',
+      'concepts' => [array(
+        'description' => 'pues una panzita',
+        'quantity' => '1',
+        'unit' => 'no aplica',
+        'quantity' => '1',
+        'unit_value' => 160.00,
+        'amount' => 160.00,
+      )],
+    );
+    //$invoice = Nominal_Invoice::create($valid_invoice);
+    //echo $invoice->id;
     //$this->assertNotNull($invoice->id);
   }
 
   public function testSuccesfulFindAll()
   {
-    $invoices = Nominal_Invoice::all();
-    foreach ($invoices->invoices as &$invoice) {
-      $this->assertNotNull($invoice->id);
-    }
-    $this->assertEquals($invoices->meta->total, count($invoices->invoices));
+    //$invoices = Nominal_Invoice::all();
+    //foreach ($invoices->invoices as &$invoice) {
+    //  $this->assertNotNull($invoice->id);
+    //}
+    //$this->assertEquals($invoices->meta->total, count($invoices->invoices));
   }
 }
 ?>

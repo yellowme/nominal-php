@@ -20,5 +20,11 @@ class Nominal_Receptor extends Nominal_Resource {
     $class = get_called_class();
     return self::_where($class, $params);
   }
+
+  public static function delete($id) {
+    $class = get_called_class();
+    return self::_delete($class, $id);
+  }
+
 }
 ?>
