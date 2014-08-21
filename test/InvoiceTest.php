@@ -48,9 +48,9 @@ class Nominal_InvoiceTest extends NominalTest {
 
   public function testSuccesfulFindReference()
   {
-    $id = "1";
-    $invoice = Nominal_Invoice::find($id);
-    var_dump($invoice);
+    //$id = "1";
+    //$invoice = Nominal_Invoice::find($id);
+    //var_dump($invoice);
     //$this->assertEquals($id, $invoice->api_reference);
   }
 
