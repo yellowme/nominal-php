@@ -20,7 +20,6 @@ class Nominal_InvoiceTest extends NominalTest {
         'description' => 'pues una panzita',
         'quantity' => '1',
         'unit' => 'no aplica',
-        'quantity' => '1',
         'unit_value' => 160.00,
         'amount' => 160.00,
       )],
@@ -38,5 +37,22 @@ class Nominal_InvoiceTest extends NominalTest {
     //}
     //$this->assertEquals($invoices->meta->total, count($invoices->invoices));
   }
+
+  public function testSuccesfulFind()
+  {
+    //$id = "e5a4ca14f37c1eaf8147b6b9";
+    //$invoice = Nominal_Invoice::find($id);
+    //var_dump($invoice);
+    //$this->assertEquals($id, $invoice->id);
+  }
+
+  public function testSuccesfulFindReference()
+  {
+    $id = "1";
+    $invoice = Nominal_Invoice::find($id);
+    var_dump($invoice);
+    //$this->assertEquals($id, $invoice->api_reference);
+  }
+
 }
 ?>
