@@ -13,10 +13,8 @@ class Nominal_Requestor {
   }
   
   private function setHeaders() {
-    $objDateTime = new DateTime('NOW');
-    $time = gmdate("c");
-    $signature = base64_encode(hash_hmac('sha256', $time, $this->privateApiKey));
-
+    $time = time();
+    $signature = hash_hmac('sha256', $time, $this->privateApiKey);
     $user_agent = array('bindings_version' => Nominal::VERSION,
     'lang' => 'php',
     'lang_version' => phpversion(),
@@ -26,7 +24,7 @@ class Nominal_Requestor {
       'Accept: application/vnd.nominal-v' . Nominal::$apiVersion . '+json',
       'X-Nominal-Client-User-Agent: ' . json_encode($user_agent),
       'User-Agent: Nominal/v1 PhpBindings/' . Nominal::VERSION,
-      'x-nominal-date: ' . $time,
+      'x-nominal-time: ' . $time,
       'Authorization: Nominal ' . $this->apiKey . ':' . $signature);
 
     return $headers;
