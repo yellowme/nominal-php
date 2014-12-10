@@ -13,6 +13,7 @@ class Nominal_Requestor {
   }
   
   private function setHeaders() {
+    date_default_timezone_set("UTC"); 
     $time = time();
     $signature = hash_hmac('sha256', $time, $this->privateApiKey);
     $user_agent = array('bindings_version' => Nominal::VERSION,
