@@ -38,6 +38,25 @@ class Nominal_InvoiceTest extends NominalTest {
     //$this->assertEquals($invoices->meta->total, count($invoices->invoices));
   }
 
+  public function testSuccesfulFiles()
+  {
+    //$id = '11ba32346c220fdddfe1ca37';
+    //$invoice = Nominal_Invoice::files($id);
+    //var_dump($invoice);
+  }
+
+  public function testSuccesfulStampXML()
+  {
+    $certificate_number = "20001000000200000293";
+    $certificate = "test/certs/AAD990814BP7/aad990814bp7.cer";
+    $private_key = "test/certs/AAD990814BP7/aad990814bp7.key.pem";
+    $xml = $this->buildXML();
+    $xml = Nominal_Invoice::sealXML($xml, $certificate_number, $certificate, $private_key);
+
+    $invoice = Nominal_Invoice::stamp_xml($xml);
+    var_dump($invoice);
+  }
+
   public function testSuccesfulFind()
   {
     //$id = "e5a4ca14f37c1eaf8147b6b9";
@@ -54,5 +73,29 @@ class Nominal_InvoiceTest extends NominalTest {
     //$this->assertEquals($id, $invoice->api_reference);
   }
 
+  public function buildXML(){
+    $fecha_actual = substr( date('c'), 0, 19);
+    $cfdi = <<<XML
+<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante xsi:schemaLocation="http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd" xmlns:cfdi="http://www.sat.gob.mx/cfd/3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="3.2" fecha="$fecha_actual" tipoDeComprobante="ingreso" noCertificado="" certificado="" sello="" formaDePago="Pago en una sola exhibición" metodoDePago="Transferencia Electrónica" NumCtaPago="No identificado" LugarExpedicion="MERIDA" subTotal="10.00" total="11.60">
+<cfdi:Emisor nombre="EMPRESA DEMO" rfc="AAD990814BP7">
+  <cfdi:RegimenFiscal Regimen="No aplica"/>
+</cfdi:Emisor>
+<cfdi:Receptor nombre="PUBLICO EN GENERAL" rfc="XAXX010101000"></cfdi:Receptor>
+<cfdi:Conceptos>
+  <cfdi:Concepto cantidad="1" unidad="NO APLICA" descripcion="PERAS Y MANZANAS" valorUnitario="1.00" importe="10.00">
+  </cfdi:Concepto>  
+</cfdi:Conceptos>
+<cfdi:Impuestos totalImpuestosTrasladados="1.60">
+  <cfdi:Traslados>
+    <cfdi:Traslado impuesto="IVA" tasa="16.00" importe="1.6"></cfdi:Traslado>
+  </cfdi:Traslados>
+</cfdi:Impuestos>
+</cfdi:Comprobante>
+XML;
+    return $cfdi;
+  }
+
 }
+
 ?>
