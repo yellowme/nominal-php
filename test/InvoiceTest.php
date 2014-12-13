@@ -40,21 +40,20 @@ class Nominal_InvoiceTest extends NominalTest {
 
   public function testSuccesfulFiles()
   {
-    //$id = '11ba32346c220fdddfe1ca37';
-    //$invoice = Nominal_Invoice::files($id);
-    //var_dump($invoice);
+    $id = 'c226e02900792f0f7e2d0b83';
+    $invoice = Nominal_Invoice::files($id);
+    var_dump($invoice);
   }
 
   public function testSuccesfulStampXML()
   {
-    $certificate_number = "20001000000200000293";
-    $certificate = "test/certs/AAD990814BP7/aad990814bp7.cer";
-    $private_key = "test/certs/AAD990814BP7/aad990814bp7.key.pem";
-    $xml = $this->buildXML();
-    $xml = Nominal_Invoice::sealXML($xml, $certificate_number, $certificate, $private_key);
-
-    $invoice = Nominal_Invoice::stamp_xml($xml);
-    var_dump($invoice);
+    //$certificate_number = "20001000000200000293";
+    //$certificate = "test/certs/AAD990814BP7/aad990814bp7.cer";
+    //$private_key = "test/certs/AAD990814BP7/aad990814bp7.key.pem";
+    //$xml = $this->buildXML();
+    //$xml = Nominal_Invoice::sealXML($xml, $certificate_number, $certificate, $private_key);
+    //$invoice = Nominal_Invoice::stamp_xml($xml);
+    //var_dump($invoice);
   }
 
   public function testSuccesfulFind()
