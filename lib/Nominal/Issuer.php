@@ -14,7 +14,7 @@ class Nominal_Issuer extends Nominal_Resource {
   public static function update($id, $params=null)
   {
     $class = get_called_class();
-    return self::_create($class, $params);
+    return self::_update($class, $id, $params);
   }
 
   public static function all($params=null) {

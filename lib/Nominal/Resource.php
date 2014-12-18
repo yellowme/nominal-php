@@ -71,6 +71,14 @@ abstract class Nominal_Resource
     return $requestor->request('post', $url, $params);
   }
 
+  protected static function _update($class, $id, $params) 
+  {
+    $instance = new $class($id);
+    $requestor = new Nominal_Requestor();
+    $url = $instance->instanceUrl();
+    return $requestor->request('put', $url, $params);
+  }
+
   protected static function _delete($class,$id) 
   {
     $instance = new $class($id);
