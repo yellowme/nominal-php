@@ -2,7 +2,7 @@
 abstract class Nominal {
   public static $apiKey;
   public static $privateApiKey;
-  public static $apiBase = 'https://api.nominal.mx';
+  public static $apiBase = 'http://api.nominal.dev:3000';
   public static $apiVersion = null;
   const VERSION = '1.0.0';
 

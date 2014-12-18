@@ -27,6 +27,5 @@ require(dirname(__FILE__) . '/Nominal/Resource.php');
 // Nominal API Resources
 require(dirname(__FILE__) . '/Nominal/Invoice.php');
 require(dirname(__FILE__) . '/Nominal/Issuer.php');
-require(dirname(__FILE__) . '/Nominal/Receptor.php');
 
 ?>

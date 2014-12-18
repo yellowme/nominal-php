@@ -5,12 +5,13 @@ class Nominal_Issuer extends Nominal_Resource {
     return self::_find($class, $id);
   }
 
-  public static function where($params=null) {
+  public static function create($params=null)
+  {
     $class = get_called_class();
-    return self::_where($class, $params);
+    return self::_create($class, $params);
   }
 
-  public static function create($params=null)
+  public static function update($id, $params=null)
   {
     $class = get_called_class();
     return self::_create($class, $params);

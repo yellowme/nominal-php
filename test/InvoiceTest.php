@@ -40,9 +40,9 @@ class Nominal_InvoiceTest extends NominalTest {
 
   public function testSuccesfulFiles()
   {
-    $id = 'c226e02900792f0f7e2d0b83';
-    $invoice = Nominal_Invoice::files($id);
-    var_dump($invoice);
+    //$id = 'c226e02900792f0f7e2d0b83';
+    //$invoice = Nominal_Invoice::files($id);
+    //var_dump($invoice);
   }
 
   public function testSuccesfulStampXML()
