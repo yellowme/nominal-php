@@ -5,6 +5,11 @@ class Nominal_Invoice extends Nominal_Resource {
     return self::_find($class, $id);
   }
 
+  public static function delete($id) {
+    $class = get_called_class();
+    return self::_delete($class, $id);
+  }
+
   public static function where($params=null) {
     $class = get_called_class();
     return self::_where($class, $params);

@@ -28,12 +28,12 @@ class Nominal_InvoiceTest extends NominalTest {
           'postal_code' => '12345',
         )
       ),
-      'receptor_attributes' => array(
+      'receptor' => array(
         'name' => 'GENERICO',
-        'rfc' => 'AAD990814BP1',
+        'rfc' => 'AAD990814BP2',
         'email' => 'admin@admin.com',
         'phone' => '818181818',
-        'address_attributes' => array(
+        'address' => array(
           'street' => 'calle',
           'exterior_number' => '3232',
           'interior_number' => '3',
@@ -46,47 +46,40 @@ class Nominal_InvoiceTest extends NominalTest {
           'postal_code' => '12345',
         )
       ),
-      'api_reference' => '1',
-      'serie' => '',
-      'folio' => '1',
+      'folio' => '2',
       'subtotal' => '10',
       'total' => '11.60',
       'expedition_place' => 'Cancun',
-      'api_reference' => '1',
-      'api_reference' => '1',
-      'concepts_attributes' => [array(
+      'api_reference' => '2',
+      'concepts' => [array(
         'description' => 'pues una panzita',
         'quantity' => '1',
         'unit' => 'no aplica',
         'unit_value' => 160.00,
         'amount' => 160.00,
       )],
-      #'tax_attributes' => array(
-      #  'withholdings_attributes' => array(
-      #    'tax' => 0,
-      #    'rate' => 16.00,
-      #    'amount' => 160.00,
-      #  ),
-      #  'transfers_attributes' => array(
-      #    'tax' => 0,
-      #    'rate' => 16.00,
-      #    'amount' => 160.00,
-      #  ),
-      #),
+      'tax' => array(
+        'withholdings' => [array(
+          'tax' => 0,
+          'rate' => 16.00,
+          'amount' => 160.00,
+        )],
+        'transfers' => [array(
+          'tax' => 0,
+          'rate' => 16.00,
+          'amount' => 160.00,
+        )],
+      ),
     );
-        #tax_attributes: [
-        #  :id, :total_taxes_withheld, :total_taxes_transferred,
-        #  withholdings_attributes: [
-        #    :id, :tax, :rate, :amount, :_destroy,
-        #  ],
-        #  transfers_attributes: [
-        #    :id, :tax, :rate, :amount, :hard_coded, :_destroy,
-        #  ]
-        #],
     //$response = Nominal_Invoice::create($valid_invoice);
-    //var_dump($response);
-    //echo $response->invoice->id;
     //$this->assertNotNull($response->invoice->id);
+  }
+
+  public function testSuccesfulDelete()
+  {
+    //$id = "1";
+    //$response = Nominal_Invoice::delete($id);
+    //$this->assertEquals('220', $response->code);
   }
 
   public function testSuccesfulFindAll()
