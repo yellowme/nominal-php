@@ -10,23 +10,83 @@ class Nominal_InvoiceTest extends NominalTest {
     //$this->assertEquals($id, $invoice->id);
   }
 
-  public function testSuccesfulCreateInvoice()
+  public function testSuccesfulCreateInvoiceFromJSON()
   {
     $valid_invoice = array(
-      'issuer_id' => '4cb956a2f11d6cc89c7b43de',
-      'receptor_id' => 'c3c7d3a90eb2fc9ad1fed49d',
+      'issuer' => array(
+        'id' => 'c777346a768c37168bf925c8',
+        'address' => array(
+          'street' => 'calle',
+          'exterior_number' => '3232',
+          'interior_number' => '3',
+          'neighborhood' => 'francisco montejo',
+          'locality' => 'localidad',
+          'reference' => 'a la vuelta',
+          'municipality' => 'municipio',
+          'state' => 'quintana roo',
+          'country' => 'mexico',
+          'postal_code' => '12345',
+        )
+      ),
+      'receptor_attributes' => array(
+        'name' => 'GENERICO',
+        'rfc' => 'AAD990814BP1',
+        'email' => 'admin@admin.com',
+        'phone' => '818181818',
+        'address_attributes' => array(
+          'street' => 'calle',
+          'exterior_number' => '3232',
+          'interior_number' => '3',
+          'neighborhood' => 'francisco montejo',
+          'locality' => 'localidad',
+          'reference' => 'a la vuelta',
+          'municipality' => 'municipio',
+          'state' => 'quintana roo',
+          'country' => 'mexico',
+          'postal_code' => '12345',
+        )
+      ),
       'api_reference' => '1',
-      'concepts' => [array(
+      'serie' => '',
+      'folio' => '1',
+      'subtotal' => '10',
+      'total' => '11.60',
+      'expedition_place' => 'Cancun',
+      'api_reference' => '1',
+      'api_reference' => '1',
+      'concepts_attributes' => [array(
         'description' => 'pues una panzita',
         'quantity' => '1',
         'unit' => 'no aplica',
         'unit_value' => 160.00,
         'amount' => 160.00,
       )],
+      #'tax_attributes' => array(
+      #  'withholdings_attributes' => array(
+      #    'tax' => 0,
+      #    'rate' => 16.00,
+      #    'amount' => 160.00,
+      #  ),
+      #  'transfers_attributes' => array(
+      #    'tax' => 0,
+      #    'rate' => 16.00,
+      #    'amount' => 160.00,
+      #  ),
+      #),
     );
-    //$invoice = Nominal_Invoice::create($valid_invoice);
-    //echo $invoice->id;
-    //$this->assertNotNull($invoice->id);
+        #tax_attributes: [
+        #  :id, :total_taxes_withheld, :total_taxes_transferred,
+        #  withholdings_attributes: [
+        #    :id, :tax, :rate, :amount, :_destroy,
+        #  ],
+        #  transfers_attributes: [
+        #    :id, :tax, :rate, :amount, :hard_coded, :_destroy,
+        #  ]
+        #],
+    //$response = Nominal_Invoice::create($valid_invoice);
+    //var_dump($response);
+    //echo $response->invoice->id;
+    //$this->assertNotNull($response->invoice->id);
   }
 
   public function testSuccesfulFindAll()
