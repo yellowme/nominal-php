@@ -14,7 +14,7 @@ class Nominal_InvoiceTest extends NominalTest {
   {
     $valid_invoice = array(
       'issuer' => array(
-        'id' => '4cb956a2f11d6cc89c7b43de',
+        'id' => 'c777346a768c37168bf925c8',
         'address' => array(
           'street' => 'calle',
           'exterior_number' => '3232',
@@ -58,11 +58,6 @@ class Nominal_InvoiceTest extends NominalTest {
         'amount' => 160.00,
       )],
       'tax' => array(
-        'withholdings' => [array(
-          'tax' => 0,
-          'rate' => 16.00,
-          'amount' => 160.00,
-        )],
         'transfers' => [array(
           'tax' => 0,
           'rate' => 16.00,
@@ -70,8 +65,9 @@ class Nominal_InvoiceTest extends NominalTest {
         )],
       ),
     );
-    //$response = Nominal_Invoice::create($valid_invoice);
-    //$this->assertNotNull($response->invoice->id);
+    $response = Nominal_Invoice::create($valid_invoice);
+    var_dump($response);
+    $this->assertNotNull($response->invoice->id);
   }
 
   public function testSuccesfulDelete()
