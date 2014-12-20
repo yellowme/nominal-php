@@ -14,7 +14,7 @@ class Nominal_InvoiceTest extends NominalTest {
   {
     $valid_invoice = array(
       'issuer' => array(
-        'id' => 'c777346a768c37168bf925c8',
+        'id' => '4cb956a2f11d6cc89c7b43de',
         'address' => array(
           'street' => 'calle',
           'exterior_number' => '3232',
@@ -50,7 +50,6 @@ class Nominal_InvoiceTest extends NominalTest {
       'subtotal' => '10',
       'total' => '11.60',
       'expedition_place' => 'Cancun',
-      'api_reference' => '2',
       'concepts' => [array(
         'description' => 'pues una panzita',
         'quantity' => '1',
