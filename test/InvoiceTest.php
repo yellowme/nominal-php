@@ -103,6 +103,14 @@ class Nominal_InvoiceTest extends NominalTest {
     //var_dump($invoice);
   }
 
+  public function testSuccesfulCancel()
+  {
+    $id = "851319adf6852bc0941a34a9";
+    $invoice = Nominal_Invoice::cancel($id);
+    var_dump($invoice);
+    //$this->assertEquals($id, $invoice->id);
+  }
+
   public function testSuccesfulFind()
   {
     //$id = "e5a4ca14f37c1eaf8147b6b9";

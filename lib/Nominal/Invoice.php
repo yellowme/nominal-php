@@ -37,6 +37,16 @@ class Nominal_Invoice extends Nominal_Resource {
     return $requestor->request('post', $url, $params);
   }
 
+  public static function cancel($id) {
+    $class = get_called_class();
+    $instance = new $class();
+    $base = Nominal_Invoice::classUrl($class);
+    $url = "$base/$id/cancel";
+    $requestor = new Nominal_Requestor();
+    $params = null;
+    return $requestor->request('post', $url, $params);
+  }
+
   public static function files($id) {
     $class = get_called_class();
     $instance = new $class($id);
