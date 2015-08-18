@@ -70,6 +70,7 @@ class Nominal_Requestor {
     $opts[CURLOPT_CONNECTTIMEOUT] = 30;
     $opts[CURLOPT_TIMEOUT] = 80;
     $opts[CURLOPT_RETURNTRANSFER] = true;
+    $opts[CURLOPT_CAINFO] = dirname(__FILE__) . '/../data/ca-certificates.crt';
     $opts[CURLOPT_HTTPHEADER] = $headers;
     curl_setopt_array($curl, $opts);
     $response = curl_exec($curl);
