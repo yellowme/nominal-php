@@ -66,6 +66,7 @@ class Nominal_InvoiceTest extends NominalTest {
       ),
     );
     //$response = Nominal_Invoice::create($valid_invoice);
+    //var_dump($response);
     //$this->assertNotNull($response->invoice->id);
   }
 
@@ -95,8 +96,8 @@ class Nominal_InvoiceTest extends NominalTest {
   public function testSuccesfulStampXML()
   {
     //$certificate_number = "20001000000200000293";
-    //$certificate = "test/certs/AAD990814BP7/aad990814bp7.cer";
-    //$private_key = "test/certs/AAD990814BP7/aad990814bp7.key.pem";
+    //$certificate = "test/files/certs/AAD990814BP7/aad990814bp7.cer";
+    //$private_key = "test/files/certs/AAD990814BP7/aad990814bp7.key.pem";
     //$xml = $this->buildXML();
     //$xml = Nominal_Invoice::sealXML($xml, $certificate_number, $certificate, $private_key);
     //$invoice = Nominal_Invoice::stamp_xml($xml);
