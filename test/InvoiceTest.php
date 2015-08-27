@@ -77,15 +77,6 @@ class Nominal_InvoiceTest extends NominalTest {
     //$this->assertEquals('220', $response->code);
   }
 
-  public function testSuccesfulFindAll()
-  {
-    $invoices = Nominal_Invoice::all();
-    foreach ($invoices->invoices as &$invoice) {
-      $this->assertNotNull($invoice->id);
-    }
-    $this->assertEquals($invoices->meta->total, count($invoices->invoices));
-  }
-
   public function testSuccesfulFiles()
   {
     //$id = 'c226e02900792f0f7e2d0b83';
