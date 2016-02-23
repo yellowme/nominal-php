@@ -14,7 +14,7 @@ class Nominal_InvoiceTest extends NominalTest {
   {
     $valid_invoice = array(
       'issuer' => array(
-        'id' => 'c777346a768c37168bf925c8',
+        'id' => '4cb956a2f11d6cc89c7b43de',
         'address' => array(
           'street' => 'calle',
           'exterior_number' => '3232',
@@ -65,9 +65,9 @@ class Nominal_InvoiceTest extends NominalTest {
         )],
       ),
     );
-    //$response = Nominal_Invoice::create($valid_invoice);
-    //var_dump($response);
-    //$this->assertNotNull($response->invoice->id);
+    $response = Nominal_Invoice::create($valid_invoice);
+    var_dump($response);
+    $this->assertNotNull($response->invoice->id);
   }
 
   public function testSuccesfulDelete()

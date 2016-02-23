@@ -37,7 +37,7 @@ class Nominal_IssuerTest extends NominalTest {
 
   public function testSuccesfulUpdate()
   {
-    $id = "3c20b3e208b022a9fc5d4342";
+    $id = "4cb956a2f11d6cc89c7b43de";
     $name = "Empresa 234";
     $valid_issuer = array(
       'name' => $name,
@@ -47,21 +47,12 @@ class Nominal_IssuerTest extends NominalTest {
     //$this->assertEquals($name, $find_response->issuer->name);
   }
 
-  public function testSuccesfulFindAll()
-  {
-    $issuers = Nominal_Issuer::all();
-    var_dump($issuers);
-    foreach ($issuers->issuers as &$issuer) {
-      $this->assertNotNull($issuer->id);
-    }
-    $this->assertEquals($issuers->meta->total, count($issuers->issuers));
-  }
-
   public function testSuccesfulFind()
   {
-    //$id = "a02289e442d812e09299cbf8";
-    //$response = Nominal_Issuer::find($id);
-    //$this->assertEquals($id, $response->issuer->id);
+    $id = "4cb956a2f11d6cc89c7b43de";
+    $response = Nominal_Issuer::find($id);
+    var_dump($response);
+    $this->assertEquals($id, $response->issuer->id);
   }
   
 }
